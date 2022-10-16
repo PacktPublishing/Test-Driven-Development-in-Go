@@ -35,26 +35,28 @@ func TestAdd(t *testing.T) {
 	// Arrange
 	e := calculator.NewEngine()
 
-	actAssert := func(x, y, want float64) {
-		// Act
-		got := e.Add(x, y)
-
-		//Assert
-		if got != want {
-			t.Errorf("Add(%.2f,%.2f) incorrect, got: %.2f, want: %.2f", x, y, got, want)
-		}
-	}
-
 	t.Run("positive input", func(t *testing.T) {
+		// Arrange
 		x, y := 2.5, 3.5
 		want := 6.0
-		actAssert(x, y, want)
+
+		// Act
+		result := e.Add(x, y)
+
+		// Assert
+		assert.Equal(t, want, result)
 	})
 
 	t.Run("negative input", func(t *testing.T) {
+		// Arrange
 		x, y := -2.5, -3.5
 		want := -6.0
-		actAssert(x, y, want)
+
+		// Act
+		result := e.Add(x, y)
+
+		// Assert
+		assert.Equal(t, want, result)
 	})
 }
 
