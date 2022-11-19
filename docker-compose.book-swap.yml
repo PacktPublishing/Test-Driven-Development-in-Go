@@ -1,0 +1,31 @@
+version: '3'
+
+networks:
+  book-swap-example:
+    driver: bridge
+
+services:
+  books:
+    build:
+      context: .
+      dockerfile: Dockerfile.book-swap
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    restart: on-failure
+    networks:
+      - book-swap-example
+  db:
+    image: postgres:15.0-alpine
+    ports:
+      - "5432:5432"
+    expose:
+      - "5432"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: books
+    restart: on-failure
+    networks:
+      - book-swap-example
