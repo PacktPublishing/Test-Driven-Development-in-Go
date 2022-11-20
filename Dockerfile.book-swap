@@ -6,12 +6,11 @@ WORKDIR /app
 
 COPY go.mod ./
 COPY go.sum ./
+COPY . .
+
 RUN go mod download
-
-COPY *.go ./
-
-RUN go build -o /book-swap
-
+RUN go build ./chapter05/cmd
+RUN apk --no-cache add curl
 EXPOSE 3000
 
-CMD [ "/book-swap" ]
+CMD [ "./cmd" ]

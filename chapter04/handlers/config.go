@@ -14,7 +14,7 @@ func ConfigureServer(handler *Handler) *mux.Router {
 	router.Methods("GET").Path("/books").Handler(http.HandlerFunc(handler.ListBooks))
 	router.Methods("POST").Path("/users").Handler(http.HandlerFunc(handler.UserUpsert))
 	router.Methods("GET").Path("/users/{id}").Handler(http.HandlerFunc(handler.ListUserByID))
-	router.Methods("POST").Path("/users/{id}").Handler(http.HandlerFunc(handler.SwapBook))
+	router.Methods("POST").Path("/books/{id}").Handler(http.HandlerFunc(handler.SwapBook))
 	router.Methods("POST").Path("/books").Handler(http.HandlerFunc(handler.BookUpsert))
 	
 	return router
