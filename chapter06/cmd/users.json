@@ -1,0 +1,16 @@
+[
+  {
+    "id": "user-uuid-1",
+    "name": "Adelina Simion",
+    "address": "1 Fleet Street",
+    "post_code": "EC4R 3TE",
+    "country": "United Kingdom"
+  },
+  {
+    "id": "user-uuid-2",
+    "name": "Nancy Jones",
+    "address": "1 London Road",
+    "post_code": "EC4R 3TE",
+    "country": "United Kingdom"
+  }
+]
