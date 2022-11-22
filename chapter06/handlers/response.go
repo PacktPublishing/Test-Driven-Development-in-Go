@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/PacktPublishing/Test-Driven-Development-in-Go/chapter05/db"
+	"github.com/PacktPublishing/Test-Driven-Development-in-Go/chapter06/db"
 )
 
 // Response contains all the response types of our handlers.

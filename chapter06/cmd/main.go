@@ -1,47 +1,43 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
 
-	_ "embed"
-
-	"github.com/PacktPublishing/Test-Driven-Development-in-Go/chapter05/db"
-	"github.com/PacktPublishing/Test-Driven-Development-in-Go/chapter05/handlers"
+	"github.com/PacktPublishing/Test-Driven-Development-in-Go/chapter06/db"
+	"github.com/PacktPublishing/Test-Driven-Development-in-Go/chapter06/handlers"
+	"github.com/golang-migrate/migrate/v4"
+	_ "github.com/golang-migrate/migrate/v4/database/postgres"
+	_ "github.com/golang-migrate/migrate/v4/source/file"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
 )
 
-//go:embed books.json
-var booksFile []byte
-
-//go:embed users.json
-var usersFile []byte
+var postgresURL = "postgres://adelinasimion:postgres@localhost:5432/bookswap?sslmode=disable"
 
 func main() {
-	books, users := importInitial()
+	m, err := migrate.New("file://db/migrations", postgresURL)
+	if err != nil {
+		log.Fatal(err)
+	}	
+	if err := m.Up(); err != migrate.ErrNoChange {
+		log.Fatal(err)
+	}
+	// defer func() {
+	// 	m.Down()
+	// }()
+	dbConn, err := gorm.Open(postgres.Open(postgresURL), &gorm.Config{})
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	ps := db.NewPostingService()
-	b := db.NewBookService(books, ps)
-	u := db.NewUserService(users, b)
+	b := db.NewBookService(dbConn, ps)
+	u := db.NewUserService(dbConn, b)
 	h := handlers.NewHandler(b, u)
 
 	router := handlers.ConfigureServer(h)
 	fmt.Println("Listening on localhost:3000...")
 	log.Fatal(http.ListenAndServe("localhost:3000", router))
-}
-
-func importInitial() ([]db.Book, []db.User) {
-	var books []db.Book
-	var users []db.User
-
-	err := json.Unmarshal(booksFile, &books)
-	if err != nil {
-		log.Fatal(err)
-	}
-	err = json.Unmarshal(usersFile, &users)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	return books, users
 }

@@ -6,7 +6,7 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/PacktPublishing/Test-Driven-Development-in-Go/chapter05/db"
+	"github.com/PacktPublishing/Test-Driven-Development-in-Go/chapter06/db"
 	"github.com/gorilla/mux"
 )
 
@@ -26,19 +26,35 @@ func NewHandler(bs *db.BookService, us *db.UserService) *Handler {
 
 // Index is invoked by HTTP GET /.
 func (h *Handler) Index(w http.ResponseWriter, r *http.Request) {
+	books, err := h.bs.List()
+	if err != nil {
+		writeResponse(w, http.StatusInternalServerError, &Response{
+			Error: err.Error(),
+		})
+		return
+	}
+
 	// Send an HTTP status & a hardcoded message
 	resp := &Response{
 		Message: "Welcome to the BookSwap service!",
-		Books:   h.bs.List(),
+		Books:   books,
 	}
 	writeResponse(w, http.StatusOK, resp)
 }
 
 // ListBooks is invoked by HTTP GET /books.
 func (h *Handler) ListBooks(w http.ResponseWriter, r *http.Request) {
+	books, err := h.bs.List()
+	if err != nil {
+		writeResponse(w, http.StatusInternalServerError, &Response{
+			Error: err.Error(),
+		})
+		return
+	}
+
 	// Send an HTTP status & the list of books
 	writeResponse(w, http.StatusOK, &Response{
-		Books: h.bs.List(),
+		Books: books,
 	})
 }
 
@@ -98,21 +114,13 @@ func (h *Handler) ListUserByID(w http.ResponseWriter, r *http.Request) {
 
 // SwapBook is invoked by POST /users/{id}
 func (h *Handler) SwapBook(w http.ResponseWriter, r *http.Request) {
-	userID := mux.Vars(r)["id"]
+	bookID := mux.Vars(r)["id"]
+	userID := r.URL.Query().Get("user")
 	if err := h.us.Exists(userID); err != nil {
 		writeResponse(w, http.StatusBadRequest, &Response{
 			Error: err.Error(),
 		})
 		return
-	}
-
-	bookID := r.URL.Query().Get("book")
-	if bookID == "" {
-		resp := &Response{
-			Error: fmt.Errorf("no bookID provided for book swap").Error(),
-		}
-		writeResponse(w, http.StatusBadRequest, resp)
-
 	}
 	book, err := h.bs.SwapBook(bookID, userID)
 	if err != nil {
@@ -155,10 +163,10 @@ func (h *Handler) BookUpsert(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Call the repository method corresponding to the operation
-	book = h.bs.Upsert(book)
+	updatedBook := h.bs.Upsert(&book)
 	// Send an HTTP success status & the return value from the repo
 	writeResponse(w, http.StatusOK, &Response{
-		Books: []db.Book{book},
+		Books: []db.Book{*updatedBook},
 	})
 }
 
