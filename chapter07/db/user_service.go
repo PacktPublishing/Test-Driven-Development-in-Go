@@ -19,11 +19,11 @@ type User struct {
 // UserService has all the dependencies required for managing users.
 type UserService struct {
 	DB *gorm.DB
-	bs *BookService
+	bs *BookRepository
 }
 
 // NewUserService initialises the UserService.
-func NewUserService(db *gorm.DB, bs *BookService) *UserService {
+func NewUserService(db *gorm.DB, bs *BookRepository) *UserService {
 	return &UserService{
 		DB: db,
 		bs: bs,

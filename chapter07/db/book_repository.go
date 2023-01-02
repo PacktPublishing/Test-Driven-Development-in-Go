@@ -16,32 +16,31 @@ type Book struct {
 	Status  string `json:"status"`
 }
 
-// BookService contains all the functionality and dependencies for managing books.
-type BookService struct {
+// BookRepository contains all the functionality and dependencies for managing books.
+type BookRepository struct {
 	DB *gorm.DB
 	ps PostingService
 }
 
-// NewBookService initialises a BookService given its dependencies.
-func NewBookService(db *gorm.DB, ps PostingService) *BookService {
-	return &BookService{
+// NewBookRepository initialises a BookService given its dependencies.
+func NewBookRepository(db *gorm.DB, ps PostingService) *BookRepository {
+	return &BookRepository{
 		DB: db,
 		ps: ps,
 	}
 }
 
-// Get returns a given book or error if none exists.
-func (bs *BookService) Get(id string) (*Book, error) {
-	var b Book
-	if r := bs.DB.Where("id = ?", id).First(&b); r.Error != nil {
-		return nil, r.Error
+// Get populates a given book or returns error if none exists.
+func (bs *BookRepository) Get(b *Book) error {
+	if r := bs.DB.Where("id = ?", b.ID).First(&b); r.Error != nil {
+		return r.Error
 	}
 
-	return &b, nil
+	return nil
 }
 
 // Upsert creates or updates a book.
-func (bs *BookService) Upsert(b *Book) *Book {
+func (bs *BookRepository) Upsert(b *Book) *Book {
 	var eb Book
 	if r := bs.DB.Where("id = ?", b.ID).First(&eb); r.Error != nil {
 		b.ID = uuid.NewString()
@@ -52,7 +51,7 @@ func (bs *BookService) Upsert(b *Book) *Book {
 }
 
 // List returns the list of available books.
-func (bs *BookService) List() ([]Book, error) {
+func (bs *BookRepository) List() ([]Book, error) {
 	var items []Book
 	if result := bs.DB.Where("status = ?", Available.String()).Find(&items); result.Error != nil {
 		return nil, result.Error
@@ -62,7 +61,7 @@ func (bs *BookService) List() ([]Book, error) {
 }
 
 // ListByUser returns the list of books for a given user.
-func (bs *BookService) ListByUser(userID string) ([]Book, error) {
+func (bs *BookRepository) ListByUser(userID string) ([]Book, error) {
 	var items []Book
 	if result := bs.DB.Where("owner_id = ?", userID).Find(&items); result.Error != nil {
 		return nil, result.Error
@@ -72,7 +71,7 @@ func (bs *BookService) ListByUser(userID string) ([]Book, error) {
 }
 
 // SwapBook checks whether a book is available and, if possible, marks it as swapped.
-func (bs *BookService) SwapBook(bookID, userID string) (*Book, error) {
+func (bs *BookRepository) SwapBook(bookID, userID string) (*Book, error) {
 	var b Book
 	if r := bs.DB.Where("id = ?", bookID).First(&b); r.Error != nil {
 		return nil, fmt.Errorf("no book found for id %s:%v", bookID, r.Error)

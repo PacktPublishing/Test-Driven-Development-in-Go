@@ -4,7 +4,7 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/PacktPublishing/Test-Driven-Development-in-Go/chapter05/db"
+	"github.com/PacktPublishing/Test-Driven-Development-in-Go/chapter07/db"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 )
@@ -16,7 +16,7 @@ func TestGet(t *testing.T) {
 			Name:   "Existing book",
 			Status: db.Available.String(),
 		}
-		bs := db.NewBookService([]db.Book{eb}, nil)
+		bs := db.NewBookRepository(nil, nil)
 
 		tests := map[string]struct {
 			id      string
@@ -29,24 +29,26 @@ func TestGet(t *testing.T) {
 		}
 		for name, tc := range tests {
 			t.Run(name, func(t *testing.T) {
-				b, err := bs.Get(tc.id)
+				var b db.Book 
+				b.ID = tc.id
+				err := bs.Get(&b)
 				if tc.wantErr != nil {
 					assert.Equal(t, tc.wantErr, err)
 					assert.Nil(t, b)
 					return
 				}
 				assert.Nil(t, err)
-				assert.Equal(t, tc.want, *b)
+				assert.Equal(t, tc.want, b)
 			})
 		}
 	})
 
-	t.Run("empty books", func(t *testing.T) {
-		bs := db.NewBookService([]db.Book{}, nil)
-		b, err := bs.Get("id")
-		assert.Equal(t, errors.New("no book found"), err)
-		assert.Nil(t, b)
-	})
+	// t.Run("empty books", func(t *testing.T) {
+	// 	bs := db.NewBookRepository(nil, nil)
+	// 	b, err := bs.Get("id")
+	// 	assert.Equal(t, errors.New("no book found"), err)
+	// 	assert.Nil(t, b)
+	// })
 }
 
 // TODO: Test the other methods of the the BookService

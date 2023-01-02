@@ -20,7 +20,7 @@ func main() {
 	m, err := migrate.New("file://db/migrations", postgresURL)
 	if err != nil {
 		log.Fatal(err)
-	}	
+	}
 	if err := m.Up(); err != migrate.ErrNoChange {
 		log.Fatal(err)
 	}
@@ -33,7 +33,7 @@ func main() {
 	}
 
 	ps := db.NewPostingService()
-	b := db.NewBookService(dbConn, ps)
+	b := db.NewBookRepository(dbConn, ps)
 	u := db.NewUserService(dbConn, b)
 	h := handlers.NewHandler(b, u)
 

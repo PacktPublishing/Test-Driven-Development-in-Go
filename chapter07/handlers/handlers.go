@@ -12,12 +12,12 @@ import (
 
 // Handler contains the handler and all its dependencies.
 type Handler struct {
-	bs *db.BookService
+	bs *db.BookRepository
 	us *db.UserService
 }
 
 // NewHandler initialises a new handler, given dependencies.
-func NewHandler(bs *db.BookService, us *db.UserService) *Handler {
+func NewHandler(bs *db.BookRepository, us *db.UserService) *Handler {
 	return &Handler{
 		bs: bs,
 		us: us,
