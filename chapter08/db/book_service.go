@@ -12,7 +12,7 @@ type Book struct {
 	ID      string `json:"id" gorm:"primaryKey"`
 	Name    string `json:"name"`
 	Author  string `json:"author"`
-	OwnerID string `json:"-"`
+	OwnerID string `json:"owner_id"`
 	Status  string `json:"status"`
 }
 

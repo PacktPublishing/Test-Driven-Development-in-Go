@@ -1,0 +1,52 @@
+I, [2023-01-08T16:21:39.529275 #83295]  INFO -- : Registered expected interaction GET /
+D, [2023-01-08T16:21:39.529462 #83295] DEBUG -- : {
+  "description": "GET / request",
+  "providerState": "BookSwap is up",
+  "request": {
+    "method": "GET",
+    "path": "/",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+    },
+    "body": {
+      "json_class": "Pact::SomethingLike",
+      "contents": {
+        "message": "Welcome to the BookSwap Service!"
+      }
+    }
+  },
+  "metadata": null
+}
+I, [2023-01-08T16:21:39.532298 #83295]  INFO -- : Received request GET /
+D, [2023-01-08T16:21:39.532383 #83295] DEBUG -- : {
+  "path": "/",
+  "query": "",
+  "method": "get",
+  "headers": {
+    "Content-Type": "application/json",
+    "Host": "localhost:52462",
+    "User-Agent": "Go-http-client/1.1",
+    "Accept-Encoding": "gzip",
+    "Version": "HTTP/1.1"
+  }
+}
+I, [2023-01-08T16:21:39.532672 #83295]  INFO -- : Found matching response for GET /
+D, [2023-01-08T16:21:39.532742 #83295] DEBUG -- : {
+  "status": 200,
+  "headers": {
+  },
+  "body": {
+    "json_class": "Pact::SomethingLike",
+    "contents": {
+      "message": "Welcome to the BookSwap Service!"
+    }
+  }
+}
+I, [2023-01-08T16:21:39.534420 #83295]  INFO -- : Verifying - interactions matched
+I, [2023-01-08T16:21:39.536218 #83295]  INFO -- : Cleared interactions
+I, [2023-01-08T16:21:39.537521 #83295]  INFO -- : Writing pact for BookSwap to /Users/adelinasimion/code/Test-Driven-Development-in-Go/chapter08/contract_test/pacts/consumer-bookswap.json

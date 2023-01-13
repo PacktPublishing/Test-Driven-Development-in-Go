@@ -1,0 +1,7 @@
+# Logfile created on 2023-01-08 17:44:34 +0000 by logger.rb/56815
+I, [2023-01-08T17:46:10.950309 #85429]  INFO -- : Running example 'Verifying a pact between Consumer and BookSwap Given BookSwap is up GET / request with GET / returns a response which has status code 200'
+I, [2023-01-08T17:46:10.950920 #85429]  INFO -- : Sending GET request to path: "/" with headers: {"CONTENT_TYPE"=>"application/json", "HTTP_X_PACT_ORIGINAL_HEADER_NAMES"=>"Content-Type", "X_PACT_PROVIDER_STATES"=>[{"name"=>"BookSwap is up"}]}, see debug logs for body
+D, [2023-01-08T17:46:10.950951 #85429] DEBUG -- : body :
+I, [2023-01-08T17:46:10.976862 #85429]  INFO -- : Received response with status: 200, headers: {"Content-Length"=>"423", "Content-Type"=>"application/json; charset=UTF-8", "Date"=>"Sun, 08 Jan 2023 17:46:10 GMT"}, see debug logs for body
+D, [2023-01-08T17:46:10.976929 #85429] DEBUG -- : body: {"message":"Welcome to the BookSwap service!","books":[{"id":"e7c66031-3724-4671-b4dd-520392f4cb1a","name":"The Go Programming Language","author":"Donovan Kernighan","owner_id":"9f6ba1e3-6abb-4dbd-9c35-ee95b75157e5","status":"AVAILABLE"},{"id":"81ae0108-8377-485c-a610-75d0390afc4f","name":"The Go Programming Language","author":"Donovan Kernighan","owner_id":"9f6ba1e3-6abb-4dbd-9c35-ee95b75157e5","status":"AVAILABLE"}]}
+
