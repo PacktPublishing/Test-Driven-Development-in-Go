@@ -1,0 +1,39 @@
+{
+  "consumer": {
+    "name": "Consumer"
+  },
+  "provider": {
+    "name": "BookSwap"
+  },
+  "interactions": [
+    {
+      "description": "GET / request",
+      "providerState": "BookSwap is up",
+      "request": {
+        "method": "GET",
+        "path": "/",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+        },
+        "body": {
+          "message": "Welcome to the BookSwap Service!"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}

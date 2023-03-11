@@ -1,0 +1,4 @@
+local.env
+*.log
+*.out
+*.test

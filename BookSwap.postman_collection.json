@@ -1,0 +1,263 @@
+{
+	"info": {
+		"_postman_id": "def1fcdc-49d7-4149-af81-eadbe8304f19",
+		"name": "BookSwap",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3912352"
+	},
+	"item": [
+		{
+			"name": "Root",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}:{{port}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"port": "{{port}}"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UsersByID_Books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}:{{port}}/users/bec5b36e-d86e-4dfa-aa89-43005904472d/books",
+					"host": [
+						"{{base_url}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"users",
+						"bec5b36e-d86e-4dfa-aa89-43005904472d",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UsersByID_Magazines",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}:{{port}}/users/bec5b36e-d86e-4dfa-aa89-43005904472d/magazines",
+					"host": [
+						"{{base_url}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"users",
+						"bec5b36e-d86e-4dfa-aa89-43005904472d",
+						"magazines"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SwapBook",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}:{{port}}/books/bec5b36e-d86e-4dfa-aa89-43005904472d?user=7d6c0d1a-9128-46db-8ca6-7fe276e38b94",
+					"host": [
+						"{{base_url}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"books",
+						"bec5b36e-d86e-4dfa-aa89-43005904472d"
+					],
+					"query": [
+						{
+							"key": "user",
+							"value": "7d6c0d1a-9128-46db-8ca6-7fe276e38b94"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SwapMagazine",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}:{{port}}/magazines/bec5b36e-d86e-4dfa-aa89-43005904472d?user=7d6c0d1a-9128-46db-8ca6-7fe276e38b94",
+					"host": [
+						"{{base_url}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"magazines",
+						"bec5b36e-d86e-4dfa-aa89-43005904472d"
+					],
+					"query": [
+						{
+							"key": "user",
+							"value": "7d6c0d1a-9128-46db-8ca6-7fe276e38b94"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UserUpsert",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"name\": \"Detzy Detz\",\n    \"address\": \"1 London Road\",\n    \"post_code\": \"N1\",\n    \"country\": \"United Kingdom\"\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}:{{port}}/users",
+					"host": [
+						"{{base_url}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BookUpsert",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"The Go Programming Language\",\n    \"author\": \"Donovan Kernighan\",\n    \"owner_id\":\"c5dfade9-ed0b-432c-bb6d-f4e54110e01c\",\n    \"status\": \"AVAILABLE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}:{{port}}/books",
+					"host": [
+						"{{base_url}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MagazineUpsert",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Vanity Fair\",\n    \"owner_id\":\"bec5b36e-d86e-4dfa-aa89-43005904472d\",\n    \"status\": \"AVAILABLE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}:{{port}}/magazines",
+					"host": [
+						"{{base_url}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"magazines"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListBooks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}:{{port}}/books",
+					"host": [
+						"{{base_url}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListMagazines",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}:{{port}}/magazines",
+					"host": [
+						"{{base_url}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"magazines"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "port",
+			"value": "4000"
+		},
+		{
+			"key": "base_url",
+			"value": "localhost",
+			"type": "string"
+		}
+	]
+}

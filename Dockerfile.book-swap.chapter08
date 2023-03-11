@@ -1,0 +1,16 @@
+# syntax=docker/dockerfile:1
+
+FROM golang:1.19-alpine
+
+WORKDIR /app
+
+COPY go.mod ./
+COPY go.sum ./
+COPY . .
+
+RUN go mod download
+RUN go build ./chapter08/cmd
+RUN apk --no-cache add curl
+EXPOSE ${BOOKSWAP_PORT}
+
+CMD [ "./cmd" ]

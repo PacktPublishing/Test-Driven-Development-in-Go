@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  books:
+    build:
+      context: .
+      dockerfile: Dockerfile.book-swap.chapter07
+    ports:
+      - "${BOOKSWAP_PORT}:${BOOKSWAP_PORT}" 
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: on-failure
+    env_file:
+      - docker.env
+  db:
+    image: postgres:15.0-alpine
+    ports:
+      - "5432:5432"
+    expose:
+      - "5432"
+    env_file:
+      - docker.env
+    restart: on-failure
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U root -d books" ]
+      interval: 1s
+      timeout: 1s
+      retries: 5

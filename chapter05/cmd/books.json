@@ -1,0 +1,23 @@
+[
+  {
+    "id": "book-uuid-1",
+    "name": "For Whom The Bell Tolls",
+    "author": "Ernest Hemingway",
+    "owner_id": "user-uuid-1",
+    "status": "AVAILABLE"
+  },
+  {
+    "id": "book-uuid-2",
+    "name": "Fahrenheit 451",
+    "author": "Ray Bradbury",
+    "owner_id": "user-uuid-1",
+    "status": "AVAILABLE"
+  },
+  {
+    "id": "book-uuid-3",
+    "name": "The Silent Patient",
+    "author": "Alex Michaelides",
+    "owner_id": "user-uuid-2",
+    "status": "AVAILABLE"
+  }
+]
