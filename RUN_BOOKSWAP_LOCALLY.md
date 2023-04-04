@@ -1,4 +1,5 @@
 # Running the BookSwap application locally
+These instructions are required from `Chapter04` onwards.
 
 ## Dependencies
 You will need the following tools to run your the code in this repository: 
@@ -15,20 +16,30 @@ This project depends on a variety of testing tools, which are used for instructi
 - [pact](https://github.com/pact-foundation)
 
 ## Run locally
-From `Chapter06` onwards, you will require a database to run the `BookSwap` application:
+The `BookSwap` application can be run on its own in `chapter04` and `chapter05`:
+1. Set the `BOOKSWAP_PORT` environment variable:
+```
+BOOKSWAP_PORT=XXXX
+```
+2. Run the application:
+```
+$ go run chapterXX/cmd/main.go
+```
+
+From `chapter06` onwards, you will require a database to run the `BookSwap` application:
 1. Install [PostgresSQL](https://www.postgresql.org/download/) according to the installation steps for your  operating system.
 1. Export the following user variables: 
 ```
-$ export BOOKSWAP_DB_URL=XXX
-$ export BOOKSWAP_PORT=XXX
-$ export BOOKSWAP_BASE_URL=XXX
+BOOKSWAP_DB_URL=XXX
+BOOKSWAP_PORT=XXX
+BOOKSWAP_BASE_URL=XXX
 ```
 3. Run the `BookSwap` executable using the `go run chapterXX/cmd/main.go` command. The application will then listen on the configured port.
 
 ## Run in Docker 
 From `chapter06` onwards, you can run the `BookSwap` application with Docker: 
 1. Install [Docker](https://docs.docker.com/get-docker/) according to the installation steps for your operating system. Separate Docker configuration files have been provided for each chapter. For example, `docker-compose.book-swap.chapter06.yml` runs the version of the application corresponding to the `chapter06` directory.
-1. Create a `docker.env` file will all the variables required for running the application. Example values can be seen below: 
+1. The supplied `docker.env` file contains the variables required for running the application. The default values can be seen below: 
 ```
 POSTGRES_USER=root
 POSTGRES_PASSWORD=root
@@ -41,7 +52,7 @@ BOOKSWAP_PORT=3000
 $  docker compose -f docker-compose.book-swap.chapterXX.yml up --build
 $  docker compose -f docker-compose.book-swap.chapterXX.yml down 
 ```
-4. The application will then listen on the configured port. 
+4. The application will then listen on the configured port. You can easily test the application using curl.
 
 ```
 curl --location --request GET 'http://localhost:3000/
@@ -69,6 +80,8 @@ Instead, I recommend running unit & integration tests per chapter:
 ```
 $ LONG=true go test ./... -v
 ```
+
+**Note:** The command above will only work on `CMD` terminals. You can alternatively set the `LONG=true` environment variable in your terminal and then run the `go test` command on its own.
  
 ## Postman collection
 For your convenience, a [Postman](https://www.postman.com/downloads/) collection with requests for the BookSwap application has been provided. See `BookSwap.postman_collection.json`. This file can then be used to [import the collection into Postman](https://learning.postman.com/docs/getting-started/importing-and-exporting-data/#importing-data-into-postman).

@@ -43,7 +43,9 @@ With the following software and hardware list you can run all code files present
 | 6-11 | Docker Desktop 4.17 | Windows, Mac OS X, and Linux (Any) |
 | (optional) | Postman 10  | Windows, Mac OS X, and Linux (Any) |
 
-For instuctions on how to run code locally from Chapter06 onwards, please refer to [RUN_LOCALLY.md](https://github.com/PacktPublishing/Test-Driven-Development-in-Go/blob/main/RUN_LOCALLY.md)
+For instructions on how to run code locally from Chapter01 to Chapter03, please refer to [RUN_CALCULATOR_LOCALLY.md](https://github.com/PacktPublishing/Test-Driven-Development-in-Go/blob/main/RUN_CALCULATOR_LOCALLY.md)
+
+For instructions on how to run code locally from Chapter04 onwards, please refer to [RUN_BOOKSWAP_LOCALLY.md](https://github.com/PacktPublishing/Test-Driven-Development-in-Go/blob/main/RUN_BOOKSWAP_LOCALLY.md)
 
 We also provide a PDF file that has color images of the screenshots/diagrams used in this book. [Click here to download it](https://packt.link/KFZWx).
 
