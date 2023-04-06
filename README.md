@@ -8,6 +8,8 @@ This is the code repository for [Test-Driven Development in Go](https://www.amaz
 
 ## What is this book about?
 
+Experienced developers understand the importance of designing a comprehensive testing strategy to ensure efficient shipping and maintaining services in production. This book shows you how to utilize test-driven development (TDD), a widely adopted industry practice, for testing your Go apps at different levels. You’ll also explore challenges faced in testing concurrent code, and learn how to leverage generics and write fuzz tests.
+
 This book covers the following exciting features:
 * Create practical Go unit tests using mocks and assertions with Testify
 * Build table-driven test suites for HTTP web applications
@@ -18,8 +20,7 @@ This book covers the following exciting features:
 
 If you feel this book is for you, get your [copy](https://www.amazon.com/dp/1803247878) today!
 
-<a href="https://www.packtpub.com/?utm_source=github&utm_medium=banner&utm_campaign=GitHubBanner"><img src="https://raw.githubusercontent.com/PacktPublishing/GitHub/master/GitHub.png" 
-alt="https://www.packtpub.com/" border="5" /></a>
+<!---<a href="https://www.packtpub.com/?utm_source=github&utm_medium=banner&utm_campaign=GitHubBanner"><img src="https://raw.githubusercontent.com/PacktPublishing/GitHub/master/GitHub.png" alt="https://www.packtpub.com/" border="5" /></a> --->
 
 ## Instructions and Navigations
 All of the code is organized into folders. For example, Chapter02.
