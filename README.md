@@ -1,8 +1,8 @@
 # Test-Driven Development in Go
 
-<a href="https://www.amazon.com/dp/1803247878"><img src="https://m.media-amazon.com/images/I/41oT4utXBhL._SX403_BO1,204,203,200_.jpg" alt="Test_Driven Development In Go" height="256px" align="right"></a>
+<a href="https://www.packtpub.com/product/test-driven-development-in-go/9781803247878"><img src="https://m.media-amazon.com/images/I/41oT4utXBhL._SX403_BO1,204,203,200_.jpg" alt="Test_Driven Development In Go" height="256px" align="right"></a>
 
-This is the code repository for [Test-Driven Development in Go](https://www.amazon.com/dp/1803247878), published by Packt.
+This is the code repository for [Test-Driven Development in Go](https://www.packtpub.com/product/test-driven-development-in-go/9781803247878), published by Packt.
 
 **A practical guide to writing idiomatic and efficient Go tests through real-world examples**
 
