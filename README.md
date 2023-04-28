@@ -59,3 +59,8 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 ## Get to Know the Author
 **Adelina Simion**
  is a technology evangelist at Form3. She is a polyglot engineer and developer relations professional, with a decade of technical experience at multiple start-ups in London. She started her career as a Java backend engineer, converted later to Go, and then transitioned to a full-time developer relations role. She has published multiple online courses about Go on the LinkedIn Learning platform, helping thousands of developers upskill with Go. She has a passion for public speaking, having presented on cloud architectures at major European conferences. Adelina holds an M.Sc. in mathematical modeling and computing.
+
+### Download a free PDF
+
+ <i>If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost.<br>Simply click on the link to claim your free PDF.</i>
+<p align="center"> <a href="https://packt.link/free-ebook/9781803247878">https://packt.link/free-ebook/9781803247878 </a> </p>
