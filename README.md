@@ -1,5 +1,3 @@
-<p align='center'><a href='https://www.eventbrite.com/e/ship-production-pytorch-system-in-a-day-train-optimize-deploy-workshop-tickets-1983348934052?aff=GitHub'><img src='https://static.packt-cdn.com/assets/images/packt+events/workshop_ashish_github.png'/></a></p>
-
 # Test-Driven Development in Go
 
 <a href="https://www.packtpub.com/product/test-driven-development-in-go/9781803247878"><img src="https://m.media-amazon.com/images/I/41oT4utXBhL._SX403_BO1,204,203,200_.jpg" alt="Test_Driven Development In Go" height="256px" align="right"></a>
